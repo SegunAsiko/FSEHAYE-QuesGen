@@ -1,6 +1,6 @@
 import gradio as gr
 import openai
-openai.api_key = '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'
+openai.api_key = 'YOUR API KEY'
 
 def openai_chat (input_prompt):
 
