@@ -1,0 +1,2 @@
+LLMs must be able to create meaningful questions and answers from the text, generate a variety of questions in terms of both content coverage and difficulty, and identify the support needs of the students in order to be seen as potential support agents for teachers or even as stand-alone tools that can aid in guided reading. 
+The purpose of this project is to examine and use LLMs to generates questions for students. 
