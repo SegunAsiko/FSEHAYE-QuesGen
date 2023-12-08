@@ -1,0 +1,32 @@
+import gradio as gr
+import openai
+openai.api_key = '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'
+
+def openai_chat (input_prompt):
+
+    template = """
+Sentence: Isotopes are different forms of an element that have the same number of protons but a different number of neutrons. Some elements—such as carbon, potassium, and uranium—have naturally occurring isotopes. Carbon-12 contains six protons, six neutrons, and six electrons; therefore, it has a mass number of 12 (six protons and six neutrons). Carbon-14 contains six protons, eight neutrons, and six electrons; its atomic mass is 14 (six protons and eight neutrons). These two alternate forms of carbon are isotopes.
+Question: How many neutrons do carbon-12 and carbon-13 have, respectively?
+Sentence: Ionic and covalent bonds between elements require energy to break. Ionic bonds are not as strong as covalent, which determines their behavior in biological systems. However, not all bonds are ionic or covalent bonds. Weaker bonds can also form between molecules. Two weak bonds that occur frequently are hydrogen bonds and van der Waals interactions. Without these two types of bonds, life as we know it would not exist. Hydrogen bonds provide many of the critical, life-sustaining properties of water and also stabilize the structures of proteins and DNA, the building block of cells.
+Question: Why are hydrogen bonds and van der Waals interactions necessary for cells?
+"""
+
+    input_prompt = "Sentence: " + input_prompt
+    prompt = template + inpute_prompt
+completion = openai.Completion.create(engine="davinci",
+    prompt=prompt,
+    max_tokens=64,
+    temperature=0.7)
+message = completion.choices[0].text
+output_list = message.split("\n"
+)
+out_index = []
+for idx, sentence in enumerate(output_list):
+    if "Question" in sentence:
+        out_index.append(idx)
+    if out_index:
+        output_list[min(out_index)]
+
+gr.Interface(fn = openai_chat,
+             inputs = ["text"],
+             outputs = ["text"]).launch(debug = True)
