@@ -1,1 +1,32 @@
+# Evaluation of BLEU
+from nltk.translate.bleu_score import sentence_bleu
 
+# Sample reference and generated questions
+reference = [['When', 'is', 'the', 'rate', 'of', 'collision', 'among', 'particles', 'said', 'to', 'be', 'high']]
+generated = [['When', 'is', 'the', 'rate', 'of', 'collision', 'among', 'particles', 'high']]
+
+# Calculate BLEU score
+bleu_score = sentence_bleu(reference, generated)
+print('BLEU Score:', bleu_score)
+
+# Evaluation of ROUGE
+from nltk.translate.bleu_score import corpus_rouge
+
+# Sample reference and generated questions
+reference_questions = [['When is the rate of collision among particles said to be high?']]
+generated_questions = [['When is the rate of collision among particles high?']]
+
+# Calculate ROUGE score
+rouge_score = corpus_rouge(reference_questions, generated_questions)
+print('ROUGE Score:', rouge_score)
+
+# Evaluation of METEOR
+from meteor import meteor_score
+
+# Sample reference and generated questions
+reference_questions = 'When is the rate of collision among particles said to be high?'
+generated_questions = 'When is the rate of collision among particles high?'
+
+# Calculate METEOR score
+meteor_score = meteor_score.meteor_score([reference_questions], generated_questions)
+print('METEOR Score:', meteor_score)
